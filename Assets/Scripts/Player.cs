@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    [Header("Movimiento")]
     [SerializeField] private float velocidadMovimiento;
+    [SerializeField] private float factorGraverdad;
+
+    [Header("Detección Suelo")]
+    [SerializeField] private float radioDeteccion;
+    [SerializeField] private Transform pies;
+    [SerializeField] private LayerMask queEsSuelo;
+
     private CharacterController controller;
+
+    //Me sirve tanto para la gravedad como para los saltos.
+    private Vector3 movimientoVertical;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +28,8 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         MoverYRotar();
-
+        AplicarGravedad();
+        EnSuelo();
     }
 
     private void MoverYRotar()
@@ -40,5 +53,19 @@ public class NewBehaviourScript : MonoBehaviour
             controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
 
         }
+    }
+    private void AplicarGravedad()
+    {
+        //Mi velocidad Vertical va en aumento a cierto factor por segundo.
+        movimientoVertical.y += factorGraverdad * Time.deltaTime;
+        controller.Move(movimientoVertical * Time.deltaTime);
+    }
+
+    private bool EnSuelo()
+    {
+        //Tirar una esfera de detección en los pies con cierto radio.
+        bool resultado = Physics.CheckSphere(pies.transform.position, radioDeteccion, queEsSuelo );
+
+        return resultado;
     }
 }

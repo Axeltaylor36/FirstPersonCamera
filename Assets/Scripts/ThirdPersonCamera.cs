@@ -8,12 +8,14 @@ public class ThirdPersonCamera : MonoBehaviour
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float smoothTime;
     private CharacterController controller;
+    private Animator anim;
 
     private float velocidadRotacion;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -25,8 +27,7 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-
-        Vector3 input = new Vector3(h, v).normalized;
+        Vector2 input = new Vector3(h, v).normalized;
         //Calculo el ángulo al que tengo que rotarme en función de los inputs y cámara.
 
        
@@ -34,6 +35,7 @@ public class ThirdPersonCamera : MonoBehaviour
         //Si el jugador ha tocado teclas...
         if (input.magnitude > 0)
         {
+
             float angulo = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
             float anguloSuave = Mathf.SmoothDampAngle(transform.eulerAngles.y, angulo, ref velocidadRotacion, smoothTime);
 
@@ -43,6 +45,11 @@ public class ThirdPersonCamera : MonoBehaviour
 
             controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
 
+            anim.SetBool("walking", true);
+        }
+        else
+        {
+            anim.SetBool("walking", false);
         }
     }
 }

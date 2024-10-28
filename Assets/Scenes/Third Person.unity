@@ -578,6 +578,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 749706219}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f476ecd5d244eff4da34a1f6d162ad4d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 749706221}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f476ecd5d244eff4da34a1f6d162ad4d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 749706222}
   m_SourcePrefab: {fileID: 100100000, guid: f476ecd5d244eff4da34a1f6d162ad4d, type: 3}
 --- !u!4 &749706217 stripped
 Transform:
@@ -644,6 +652,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &749706221
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749706218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60e00932b3cecf74a954f69386722fb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &749706222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749706218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4420ee962b12f184fa5445453cd62026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadMovimiento: 1
+  smoothTime: 0.3
 --- !u!1 &1126296083
 GameObject:
   m_ObjectHideFlags: 3
@@ -1341,7 +1384,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
-    m_InvertInput: 0
+    m_InvertInput: 1
     m_MinValue: 0
     m_MaxValue: 1
     m_Wrap: 0
